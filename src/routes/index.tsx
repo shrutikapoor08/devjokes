@@ -1,7 +1,8 @@
-import { getJokes } from "../serverActions/jokesActions";
+import { getJokes } from "../serverActions/jokesActions.js";
 import { createFileRoute } from "@tanstack/react-router";
-import { JokeForm } from "@/components/JokeForm";
-import { Joke } from "../types";
+import { JokeForm } from "../components/JokeForm.js";
+import type { Joke } from "../types/index.js";
+import { JokesList } from "../components/JokesList.js";
 
 export const Route = createFileRoute("/")({
   component: App,
@@ -16,20 +17,7 @@ function App() {
       <h1 className="text-4xl font-bold text-center mb-10">DevJokes</h1>
 
       <JokeForm />
-      <div className="space-y-4">
-        {jokes?.map((joke: Joke) => (
-          <div key={joke?.id} className="rounded-md border border-transparent ">
-            <p className="font-semibold">
-              <span className="font-bold">Question: </span>
-              {joke?.question}
-            </p>
-            <p>
-              <span className="font-bold">Answer: </span>
-              {joke?.answer}
-            </p>
-          </div>
-        ))}
-      </div>
+      <JokesList jokes={jokes} />
     </div>
   );
 }

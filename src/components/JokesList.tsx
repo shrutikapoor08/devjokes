@@ -1,5 +1,5 @@
 // src/components/JokesList.tsx
-import type { Joke } from "../types/index";
+import type { Joke } from "../types/index.js";
 
 interface JokesListProps {
   jokes: Joke[];
@@ -12,7 +12,6 @@ export function JokesList({ jokes }: JokesListProps) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Jokes Collection</h2>
       {jokes.map((joke) => (
         <div
           key={joke.id}
