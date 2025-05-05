@@ -2,7 +2,8 @@
 
 A full-stack web application for collecting and sharing developer jokes, built with React, TanStack Router, and server-side rendering.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zd0rtKbtlgU?si=7W1Peoo0W0WvZmAd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![DevJokes App Demo](https://img.youtube.com/vi/zd0rtKbtlgU/0.jpg)](https://www.youtube.com/watch?v=zd0rtKbtlgU)
+
 
 
 ## 🚀 Features
