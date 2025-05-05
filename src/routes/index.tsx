@@ -1,7 +1,6 @@
 import { getJokes } from "../serverActions/jokesActions.js";
 import { createFileRoute } from "@tanstack/react-router";
 import { JokeForm } from "../components/JokeForm.js";
-import type { Joke } from "../types/index.js";
 import { JokesList } from "../components/JokesList.js";
 
 export const Route = createFileRoute("/")({

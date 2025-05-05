@@ -5,11 +5,23 @@ import { v4 as uuidv4 } from "uuid";
 
 const JOKES_FILE = "src/data/jokes.json";
 
+/**
+ * Reads jokes from the JSON file
+ */
 export const getJokes = createServerFn({ method: "GET" }).handler(async () => {
-  const jokes = await fs.promises.readFile(JOKES_FILE, "utf-8");
-  return JSON.parse(jokes) as JokesData;
-});
+  try {
+    const jokes = await fs.promises.readFile(JOKES_FILE, "utf-8");
+    return JSON.parse(jokes) as JokesData;
+  } catch (error) {
+    console.error("Error reading jokes file:", error);
+    return [];
+  }
+}
+);
 
+/**
+ * Writes jokes to the JSON file
+ */
 export const addJoke = createServerFn({ method: "POST" })
   .validator((joke: Joke) => joke)
   .handler(async ({ data }) => {
