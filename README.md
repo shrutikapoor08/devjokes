@@ -99,6 +99,39 @@ pnpm test
 
 DevJokes uses a simple file-based JSON storage system to store and retrieve jokes. The application leverages TanStack Router for routing and TanStack React Start for server-side rendering.
 
+## Data Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant UI as User Interface
+    participant Router as TanStack Router
+    participant ServerAction as Server Actions
+    participant Storage as JSON File Storage
+
+    User->>UI: Visit application
+    UI->>Router: Request route
+    Router->>ServerAction: Load jokes (SSR)
+    ServerAction->>Storage: Read jokes.json
+    Storage->>ServerAction: Return jokes data
+    ServerAction->>Router: Return jokes
+    Router->>UI: Render with data
+    UI->>User: Display jokes
+
+    User->>UI: Submit new joke
+    UI->>ServerAction: Add joke
+    ServerAction->>Storage: Write to jokes.json
+    Storage->>ServerAction: Confirm write
+    ServerAction->>UI: Return success
+    UI->>Router: Invalidate route
+    Router->>ServerAction: Reload jokes
+    ServerAction->>Storage: Read jokes.json
+    Storage->>ServerAction: Return updated jokes
+    ServerAction->>Router: Return updated jokes
+    Router->>UI: Re-render with new data
+    UI->>User: Display updated jokes
+```
+
 ### Adding a Joke
 
 1. Enter a joke question and answer in the form
